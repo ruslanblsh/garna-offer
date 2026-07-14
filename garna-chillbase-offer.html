@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Garna — Commercial Proposal</title>
+<meta name="description" content="A tailored payments & payroll proposal, powered by Garna." />
+<meta name="theme-color" content="#070807" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070807; --bg-soft:#0c0e0b;
+  --card:rgba(255,255,255,.055); --card-strong:rgba(255,255,255,.085);
+  --line:rgba(255,255,255,.09); --line-strong:rgba(255,255,255,.16);
+  --text:#f7f8f4; --muted:rgba(247,248,244,.64); --faint:rgba(247,248,244,.38);
+  --green:#7fba00; --green-bright:#a5ea16; --green-soft:rgba(127,186,0,.14);
+  --shadow:0 28px 90px rgba(0,0,0,.35);
+  --radius-lg:32px; --radius-md:22px; --radius-sm:14px;
+  --container:1180px; --header:74px;
+  --font:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(127,186,0,.12),transparent 34%),
+    radial-gradient(circle at 86% 12%,rgba(127,186,0,.12),transparent 34%),
+    linear-gradient(180deg,#070807 0%,#050605 52%,#080a07 100%);}
+.page-glow{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(circle at 50% 4%,black,transparent 74%);-webkit-mask-image:radial-gradient(circle at 50% 4%,black,transparent 74%);}
+::selection{background:var(--green);color:#050505}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{line-height:1.1;letter-spacing:-.02em;font-weight:800}
+.container{width:min(100% - 40px,var(--container));margin:0 auto}
+.section-pad{padding:88px 0}
+.section-pad.compact{padding:60px 0}
+.eyebrow,.section-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--green-bright);font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;margin-bottom:18px}
+.section-kicker .dot,.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green-bright);box-shadow:0 0 12px var(--green-bright)}
+.section-head{max-width:66ch}
+.section-head h2{font-size:clamp(27px,3.7vw,42px);letter-spacing:-1.2px}
+.section-head p{margin-top:16px;color:var(--muted);font-size:17px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 24px;border-radius:999px;border:1px solid transparent;font-size:14px;font-weight:800;letter-spacing:-.1px;cursor:pointer;transition:transform .18s ease,border-color .18s,background .18s,color .18s;white-space:nowrap}
+.btn-primary{color:#071007;background:var(--green-bright);box-shadow:0 16px 50px rgba(127,186,0,.25)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-secondary{color:var(--text);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.11)}
+.btn-secondary:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn-small{min-height:44px;padding:0 18px;font-size:13.5px}
+.btn-primary.btn-animated{position:relative;isolation:isolate;overflow:hidden;border:0}
+.btn-primary.btn-animated::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
+  background:conic-gradient(from 0deg,rgba(255,255,255,0) 0deg,rgba(255,255,255,0) 255deg,rgba(255,255,255,.95) 286deg,rgba(255,255,255,0) 326deg,rgba(255,255,255,0) 360deg);
+  animation:orbit 2.6s linear infinite}
+.btn-primary.btn-animated::after{content:"";position:absolute;inset:2px;z-index:-1;border-radius:inherit;background:var(--green-bright)}
+.btn-primary.btn-animated:hover::after{background:#b8ff27}
+@keyframes orbit{to{transform:rotate(1turn)}}
+@media (prefers-reduced-motion:reduce){.btn-primary.btn-animated::before{animation:none}}
+
+/* header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,8,7,.78);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-shell{height:var(--header);width:min(100% - 40px,1260px);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:26px}
+.brand-logo img{height:26px;display:block}
+.nav-actions{display:flex;align-items:center;gap:14px}
+.lang-switch{display:inline-flex;border:1px solid var(--line-strong);border-radius:999px;overflow:hidden}
+.lang-btn{border:0;background:transparent;color:var(--muted);font-family:var(--font);font-weight:800;font-size:12.5px;padding:8px 13px;cursor:pointer;letter-spacing:.04em}
+.lang-btn.is-active{background:var(--green-bright);color:#071007}
+@media(max-width:620px){.nav-cta{display:none}}
+
+/* hero */
+.hero{padding-top:calc(var(--header) + 56px);padding-bottom:70px;position:relative}
+.partner-tag{display:inline-flex;align-items:center;gap:13px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);margin-bottom:26px}
+.partner-tag .ptxt{font-size:12.5px;letter-spacing:.05em;color:var(--muted);font-weight:600}
+#partnerBrand{display:inline-flex;align-items:center;font-weight:900;font-size:15px;letter-spacing:-.3px;color:#fff}
+#partnerBrand img{height:20px;display:block}
+.hero h1{font-size:clamp(36px,6vw,66px);letter-spacing:-2px;line-height:1.06;max-width:16ch;padding-bottom:.1em;
+  background:linear-gradient(108deg,#ffffff 0%,#f6f7f4 34%,#d8dbd2 68%,#a9afa2 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  text-shadow:0 18px 80px rgba(255,255,255,.06)}
+.hero h1 em{font-style:normal;background:linear-gradient(105deg,#c5e88a,#a5ea16);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.hero .lead{margin-top:22px;font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:58ch}
+.hero .lead b{color:var(--text);font-weight:700}
+.hero-actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:760px){.hero-stats{grid-template-columns:repeat(2,1fr)}}
+.hstat{border:1px solid var(--line);border-radius:var(--radius-md);padding:22px 20px;background:var(--card)}
+.hstat .n{font-size:32px;font-weight:900;letter-spacing:-1px;color:var(--green-bright);font-variant-numeric:tabular-nums}
+.hstat .l{font-size:12.5px;color:var(--muted);margin-top:5px}
+
+/* generic card grid */
+.cards{display:grid;gap:18px}
+.four-cols{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.four-cols{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.four-cols{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-md);padding:26px;transition:transform .22s,border-color .22s,background .22s}
+.card:hover{transform:translateY(-4px);border-color:var(--line-strong);background:var(--card-strong)}
+.card .card-icon{width:44px;height:44px;border-radius:12px;background:var(--green-soft);border:1px solid rgba(127,186,0,.3);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.card .card-icon svg{width:22px;height:22px}
+.card h4{font-size:17px;margin-bottom:7px}
+.card p{color:var(--muted);font-size:14px}
+
+/* offer */
+.offer-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:24px;align-items:stretch}
+@media(max-width:900px){.offer-grid{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);background:var(--card);border-radius:var(--radius-lg);padding:36px}
+.rate-card{background:linear-gradient(160deg,rgba(127,186,0,.12),rgba(255,255,255,.03));display:flex;flex-direction:column;justify-content:center}
+.rate-card .cmp{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap}
+.rate-old .k{font-size:12.5px;color:var(--faint);letter-spacing:.04em;font-weight:700}
+.rate-old .v{font-size:42px;font-weight:900;color:var(--muted);text-decoration:line-through;text-decoration-color:#ff5a4d;text-decoration-thickness:3px}
+.rate-new .k{font-size:12.5px;color:var(--green-bright);letter-spacing:.04em;font-weight:800}
+.rate-new .v{font-size:76px;font-weight:900;line-height:1;color:var(--green-bright);font-variant-numeric:tabular-nums;letter-spacing:-2px}
+.rate-new .v small{font-size:26px}
+.rate-card .sub{margin-top:20px;color:var(--muted);font-size:15px}
+.rate-card .sub b{color:var(--text)}
+.flow h3{font-size:20px;margin-bottom:16px}
+.flowstep{display:flex;gap:15px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.flowstep:last-child{border-bottom:0}
+.flowstep .num{flex:0 0 30px;height:30px;border-radius:9px;background:var(--green-bright);color:#071007;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:14px}
+.flowstep b{font-weight:700;font-size:15px}
+.flowstep span.d{color:var(--muted);font-size:14px}
+.free-pill{display:inline-block;margin-top:6px;background:var(--green-soft);border:1px solid rgba(127,186,0,.35);color:var(--green-bright);font-weight:800;font-size:12.5px;padding:3px 11px;border-radius:999px}
+
+/* perks + calc */
+.perk-hi{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px}
+@media(max-width:760px){.perk-hi{grid-template-columns:1fr}}
+.perkcard{border:1px solid var(--green);background:linear-gradient(160deg,rgba(127,186,0,.14),rgba(255,255,255,.03));border-radius:var(--radius-md);padding:24px;position:relative;box-shadow:0 0 0 3px rgba(127,186,0,.1)}
+.perkcard .tag{position:absolute;top:16px;right:16px;font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--green-bright);background:rgba(127,186,0,.15);border:1px solid rgba(127,186,0,.3);padding:4px 9px;border-radius:999px}
+.perkcard .svc{font-weight:800;font-size:19px}
+.perkcard .big{font-size:44px;font-weight:900;color:var(--green-bright);margin-top:6px;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+.perkcard .cap{color:var(--muted);font-size:13.5px}
+.calc{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--card)}
+@media(max-width:820px){.calc{grid-template-columns:1fr}}
+.calc-in{padding:34px;border-right:1px solid var(--line)}
+@media(max-width:820px){.calc-in{border-right:0;border-bottom:1px solid var(--line)}}
+.calc-in h3{font-size:20px;margin-bottom:20px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+.field select,.field input{width:100%;font-family:var(--font);font-size:16px;padding:14px;border:1px solid var(--line-strong);border-radius:12px;background:rgba(0,0,0,.25);color:var(--text);outline:none;transition:.15s}
+.field select option{background:#0c0e0b;color:var(--text)}
+.field select:focus,.field input:focus{border-color:var(--green)}
+.calc-note{font-size:12.5px;color:var(--faint);margin-top:6px}
+.calc-out{padding:34px;background:linear-gradient(160deg,rgba(127,186,0,.1),rgba(0,0,0,.28));display:flex;flex-direction:column;justify-content:center}
+.calc-out .row{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px dashed var(--line)}
+.calc-out .row .k{color:var(--muted);font-size:14px}
+.calc-out .row .v{font-weight:800;font-size:18px;font-variant-numeric:tabular-nums}
+.calc-out .save{margin-top:22px}
+.calc-out .save .k{font-size:12px;color:var(--green-bright);letter-spacing:.06em;font-weight:900;text-transform:uppercase}
+.calc-out .save .v{font-size:50px;font-weight:900;color:var(--green-bright);line-height:1.05;letter-spacing:-1.5px;font-variant-numeric:tabular-nums}
+.calc-out .save .yr{color:var(--muted);font-size:14px;margin-top:4px}
+
+/* split feature (EOR) */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.eor-price{display:flex;align-items:baseline;gap:10px;margin:10px 0 22px}
+.eor-price .p{font-size:58px;font-weight:900;color:var(--green-bright);letter-spacing:-2px;font-variant-numeric:tabular-nums}
+.eor-price .u{color:var(--muted)}
+.feat{list-style:none;display:grid;gap:14px}
+.feat li,.cbullets li{display:flex;gap:13px;align-items:flex-start;font-size:15px;color:var(--muted)}
+.feat li b,.cbullets li b{color:var(--text);font-weight:700}
+.feat li svg,.cbullets li svg{flex:0 0 20px;margin-top:3px}
+.mini{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line)}
+.mini:last-of-type{border-bottom:0}
+.mini .k{color:var(--muted);font-size:14px}
+.mini .v{font-weight:800}
+
+/* cards visual */
+.cards-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+@media(max-width:900px){.cards-grid{grid-template-columns:1fr}}
+.ccard{aspect-ratio:1.586/1;border-radius:22px;background:linear-gradient(135deg,#141613,#070807 72%);border:1px solid var(--line-strong);padding:28px;position:relative;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.8);display:flex;flex-direction:column}
+.ccard::before{content:"";position:absolute;bottom:-40%;right:-20%;width:340px;height:340px;background:radial-gradient(circle,rgba(127,186,0,.25),transparent 60%)}
+.ccard .top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:2}
+.ccard .brand{font-weight:900;font-size:20px}
+.ccard .brand span{color:var(--green-bright)}
+.ccard .chip{width:42px;height:32px;border-radius:7px;background:linear-gradient(135deg,var(--green-bright),#5f8c00)}
+.ccard .no{position:relative;z-index:2;margin-top:auto;letter-spacing:.14em;font-size:18px;color:#e9eae5;font-weight:600}
+.ccard .btm{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px}
+.ccard .btm .lbl{font-size:11px;letter-spacing:.1em;color:var(--faint);font-weight:700}
+.ccard .nkyc{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--green-bright);border:1px solid rgba(127,186,0,.4);padding:3px 8px;border-radius:6px}
+.cbullets{list-style:none;display:grid;gap:16px}
+.card-badges{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px}
+.card-badges span{font-size:12px;border:1px solid var(--line);color:var(--muted);padding:6px 12px;border-radius:999px}
+
+/* compare table */
+.cmp-table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+.cmp-table th,.cmp-table td{padding:17px 20px;text-align:left;font-size:15px;border-bottom:1px solid var(--line)}
+.cmp-table thead th{background:rgba(255,255,255,.04);font-weight:800;font-size:14px}
+.cmp-table thead th.g{color:var(--green-bright)}
+.cmp-table th.center,.cmp-table td.center{text-align:center}
+.cmp-table tr:last-child td{border-bottom:0}
+.cmp-table .yes{color:var(--green-bright);font-weight:800}
+.cmp-table .no{color:var(--faint)}
+.cmp-table .old{text-decoration:line-through;text-decoration-color:#ff5a4d;color:var(--muted)}
+.cmp-table td.gcol{background:rgba(127,186,0,.08);font-weight:800}
+
+/* CTA band */
+.cta{background:linear-gradient(120deg,var(--green),var(--green-bright));color:#071007;text-align:center;border-radius:var(--radius-lg);padding:64px 24px;box-shadow:0 30px 90px rgba(127,186,0,.22)}
+.cta h2{font-size:clamp(28px,4vw,48px);letter-spacing:-1.4px}
+.cta p{margin:16px auto 30px;max-width:52ch;font-size:18px;color:#132000;font-weight:500}
+.cta .btn{background:#071007;color:#eafcb8;min-height:56px;font-size:15px}
+.cta .btn:hover{background:#000;transform:translateY(-2px)}
+
+/* footer */
+.site-footer{padding:56px 0 40px;background:radial-gradient(circle at 8% 0%,rgba(127,186,0,.1),transparent 34%),#050605;border-top:1px solid rgba(255,255,255,.07);margin-top:20px}
+.footer-topline{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
+.footer-topline img.flogo{height:24px}
+.footer-powered{display:inline-flex;align-items:center;gap:8px;color:var(--faint);font-size:13px;font-weight:700}
+.footer-powered strong{color:var(--text);font-weight:900;letter-spacing:-.3px}
+.mediacube-logo{display:inline-flex;align-items:center}
+.mediacube-logo svg{height:16px;width:auto;display:block}
+.footer-copyline{color:var(--faint);font-size:13px}
+.footer-main{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+@media(max-width:760px){.footer-main{grid-template-columns:1fr 1fr}}
+.footer-col h5{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;font-weight:900}
+.footer-col a,.footer-col p{display:block;color:var(--muted);font-size:14px;margin-bottom:9px}
+.footer-col a:hover{color:var(--green-bright)}
+.legal{margin-top:22px;font-size:12px;line-height:1.7;color:rgba(247,248,244,.4)}
+.foot-bottom{margin-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--faint)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.08s}.delay-2{transition-delay:.16s}.delay-3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="page-glow" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header class="site-header" id="top">
+  <div class="nav-shell">
+    <a class="brand-logo" href="#top" aria-label="Garna"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAW0AAACLCAMAAACdtTg7AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAYBQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////l/kKowAAAIB0Uk5TAAaPcgJs//2ZCE75txQy7dMmHNvnQA7B82KhgQR6pQxa+zrx2TAk40gaRmR+q7OvhWYSze88eImnqYt2XLGTWC4YPoeVo58Kg7vrRPdUy70Qz51WdCI4temX9b9gxVJK0So0Fsfh3zZu15uNrdVwHrko3SCRXuVCwyxMaslQaHwi9U42AAAVqklEQVR4nO1de1xTV56/B26giQ1CxChNAEFBQUEFUYuIokiw1JZS8F0QsdKdtUq11bKf/ewfu7Pz2LY7nXamozvTGVxrWzutxT58VGvxXR/1VZ+tCor4flRFrIiySbhJbnK+596bhHaykO8fGs695+Tke88953d+r0O4dgAxo6U9GuroIO3QBm9hm9xph5Y6OtqDbQ25x3FB5FY7NNXB0Q5sh7QNaw257n1bHRzes62zDeoQctnrxjo4vGZb7xjSOnLe29Y6OLxlm0RccfyhCiVnvWyvY8NLtvmIi06t9SCnvWuwY8NLtnuRBueCsHvXvGuxQ8M7tmNJvWtRFPneqyY7NLxiO57U0oXqiGPetNmhIct2gnmbeELflZDrl/qROw9OiXbo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" alt="Garna" /></a>
+    <div class="nav-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn is-active" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="ru" type="button">RU</button>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-small nav-cta" data-en="Book a demo" data-ru="Заказать демо">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="partner-tag reveal">
+      <span class="ptxt" data-en="Commercial proposal · Prepared for" data-ru="Коммерческое предложение · Подготовлено для">Commercial proposal · Prepared for</span>
+      <span id="partnerBrand"></span>
+    </div>
+    <h1 class="reveal delay-1" data-en="Payouts to your team and creators, <em>done properly</em>" data-ru="Выплаты команде и креаторам — <em>как надо</em>">Payouts to your team and creators, <em>done properly</em></h1>
+    <p class="lead reveal delay-2" data-en="{{PARTNER}} moves <b>{{VOLUME}} a month</b> and pays freelancers through {{PROVIDER}}. Bring those payouts to Garna and you get a lower fee, more ways to pay people out, and a few products {{PROVIDER}} doesn't offer at all." data-ru="{{PARTNER}} проводит <b>{{VOLUME}} в месяц</b> и платит фрилансерам через {{PROVIDER}}. Переведите эти выплаты в Garna и получите комиссию ниже, больше способов выплат и несколько продуктов, которых у {{PROVIDER}} нет вовсе.">…</p>
+    <div class="hero-actions reveal delay-3">
+      <a href="#offer" class="btn btn-primary btn-animated" data-en="See your offer" data-ru="Смотреть оффер">See your offer</a>
+      <a href="#contact" class="btn btn-secondary" data-en="Talk to us" data-ru="Связаться с нами">Talk to us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat reveal"><div class="n"><span class="js-counter" data-counter-value="2.5" data-counter-decimals="1" data-counter-suffix="%">2.5%</span></div><div class="l"><span data-en="Top-up fee for" data-ru="Комиссия за пополнение для">Top-up fee for</span> <span class="partner-token"></span></div></div>
+      <div class="hstat reveal delay-1"><div class="n"><span class="js-counter" data-counter-value="150" data-counter-suffix="+">150+</span></div><div class="l" data-en="Countries covered" data-ru="Стран покрытия">Countries covered</div></div>
+      <div class="hstat reveal delay-2"><div class="n"><span class="js-counter" data-counter-value="80" data-counter-suffix="+">80+</span></div><div class="l" data-en="Payout currencies" data-ru="Валют для выплат">Payout currencies</div></div>
+      <div class="hstat reveal delay-3"><div class="n">$0</div><div class="l" data-en="Withdrawal fee for contractors" data-ru="Комиссия за вывод для контракторов">Withdrawal fee for contractors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="section-pad" id="offer">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:44px">
+      <span class="section-kicker"><span class="dot"></span><span data-en="Your core offer" data-ru="Основной оффер">Your core offer</span></span>
+      <h2 data-en="2.5% on top-up, and free withdrawals. Nothing on top." data-ru="2.5% за пополнение и бесплатный вывод. Больше ничего.">…</h2>
+      <p data-en="{{PROVIDER}} charges around {{PROVIDER_RATE}} on average. With Garna, {{PARTNER}} pays {{RATE}}, taken once when the funds come in, and contractors pay nothing to withdraw." data-ru="{{PROVIDER}} в среднем берёт около {{PROVIDER_RATE}}. С Garna {{PARTNER}} платит {{RATE}}: один раз при заводе средств, а контракторы выводят деньги без комиссии.">…</p>
+    </div>
+    <div class="offer-grid">
+      <div class="panel rate-card reveal">
+        <div class="cmp">
+          <div class="rate-old">
+            <div class="k"><span class="partner-provider"></span> — <span data-en="avg fee" data-ru="средняя комиссия">avg fee</span></div>
+            <div class="v partner-provider-rate">3%</div>
+          </div>
+          <div class="rate-new">
+            <div class="k">Garna · <span class="partner-token"></span></div>
+            <div class="v"><span class="js-counter" data-counter-value="2.5" data-counter-decimals="1">2.5</span><small>%</small></div>
+          </div>
+        </div>
+        <div class="sub" data-en="One fee, charged on top-up. No withdrawal fees and no hidden markup on currency conversion. <b>You pay less and get more.</b>" data-ru="Одна комиссия, списывается при пополнении. Без комиссий за вывод и скрытых наценок на конвертацию. <b>Платите меньше, получаете больше.</b>">…</div>
+      </div>
+      <div class="panel flow reveal delay-1">
+        <h3 data-en="How the money moves" data-ru="Как движутся деньги">How the money moves</h3>
+        <div class="flowstep"><div class="num">1</div><div><b data-en="{{PARTNER}} tops up $100,000" data-ru="{{PARTNER}} пополняет $100 000">…</b><br><span class="d" data-en="Send funds by SWIFT, SEPA or crypto (USDT)." data-ru="Пополнение через SWIFT, SEPA или крипту (USDT).">…</span></div></div>
+      <div class="flowstep"><div class="num">2</div><div><b data-en="Garna fee: 2.5% ($2,500)" data-ru="Комиссия Garna: 2.5% ($2 500)">…</b><br><span class="d" data-en="$97,500 lands on your balance, ready to pay." data-ru="$97 500 зачисляется на баланс, готово к выплатам.">…</span></div></div>
+        <div class="flowstep"><div class="num">3</div><div><b data-en="Pay contractors worldwide" data-ru="Выплаты контракторам по всему миру">…</b><br><span class="d" data-en="Bank, card, e-wallet or crypto — their choice." data-ru="Банк, карта, кошелёк или крипта — на выбор.">…</span></div></div>
+        <div class="flowstep"><div class="num">4</div><div><b data-en="Contractors withdraw" data-ru="Контракторы выводят">…</b><br><span class="free-pill" data-en="$0 — withdrawals are free" data-ru="$0 — вывод бесплатный">…</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT METHODS -->
+<section class="section-pad compact">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:40px">
+      <span class="section-kicker"><span class="dot"></span><span data-en="Payment methods" data-ru="Платёжные методы">Payment methods</span></span>
+      <h2 data-en="However your contractors want to get paid" data-ru="Как контракторам удобно получать деньги">…</h2>
+      <p data-en="Pay in 150+ countries and 80+ local currencies. Contractors pick their method — Garna handles the rails and the compliance." data-ru="Выплаты в 150+ странах и 80+ валютах. Контрактор выбирает метод — Garna берёт на себя инфраструктуру и комплаенс.">…</p>
+    </div>
+    <div class="cards four-cols">
+      <article class="card reveal">
+        <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2"><path d="M3 21h18M4 10h16M5 10V21M19 10V21M9 10V21M15 10V21M12 3 4 7h16Z"/></svg></span>
+        <h4 data-en="Bank transfers" data-ru="Банковские переводы">…</h4>
+        <p data-en="80+ currencies incl. USD, EUR, GBP. Best FX rates, no markup." data-ru="80+ валют, включая USD, EUR, GBP. Лучший курс без наценок.">…</p>
+      </article>
+      <article class="card reveal delay-1">
+        <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+        <h4 data-en="Transfer to card" data-ru="Перевод на карту">…</h4>
+        <p data-en="Send payouts straight to bank cards — fast and familiar." data-ru="Выплаты прямо на банковские карты — быстро и привычно.">…</p>
+      </article>
+      <article class="card reveal delay-2">
+        <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M16 12h.01M3 10h18"/></svg></span>
+        <h4 data-en="E-wallets" data-ru="Электронные кошельки">…</h4>
+        <p data-en="Popular digital wallets for instant, borderless payouts." data-ru="Популярные кошельки для мгновенных выплат без границ.">…</p>
+      </article>
+      <article class="card reveal delay-3">
+        <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 8h4a2 2 0 1 1 0 4H9h5a2 2 0 1 1 0 4H9M10 6v12"/></svg></span>
+        <h4 data-en="Cryptocurrencies" data-ru="Криптовалюты">…</h4>
+        <p data-en="USDT, BTC, ETH, USDC — pay out in crypto in seconds." data-ru="USDT, BTC, ETH, USDC — выплаты в крипте за секунды.">…</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PERKS + CALCULATOR -->
+<section class="section-pad" id="perks">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:40px">
+      <span class="section-kicker"><span class="dot"></span><span data-en="Benefits for business" data-ru="Бенефиты для бизнеса">Benefits for business</span></span>
+      <h2 data-en="Partner discounts on the tools you already pay for" data-ru="Партнёрские скидки на инструменты, за которые вы уже платите">…</h2>
+      <p data-en="Through Garna partners, {{PARTNER}} gets real, negotiated discounts on 50+ SaaS tools. Chances are you already run all three of these:" data-ru="Через партнёров Garna {{PARTNER}} получает реальные согласованные скидки на 50+ SaaS-сервисов. Всеми тремя вы наверняка уже пользуетесь:">…</p>
+    </div>
+    <div class="perk-hi">
+      <div class="perkcard reveal"><span class="tag" data-en="Likely in your stack" data-ru="Наверняка есть у вас">You likely use this</span><div class="svc">ClickUp</div><div class="big"><span class="js-counter" data-counter-value="21" data-counter-suffix="%">21%</span></div><div class="cap" data-en="average real discount" data-ru="средняя реальная скидка">average real discount</div></div>
+      <div class="perkcard reveal delay-1"><span class="tag" data-en="Likely in your stack" data-ru="Наверняка есть у вас">You likely use this</span><div class="svc">Slack</div><div class="big"><span class="js-counter" data-counter-value="19" data-counter-suffix="%">19%</span></div><div class="cap" data-en="average real discount" data-ru="средняя реальная скидка">average real discount</div></div>
+      <div class="perkcard reveal delay-2"><span class="tag" data-en="Likely in your stack" data-ru="Наверняка есть у вас">You likely use this</span><div class="svc">Google Workspace</div><div class="big"><span class="js-counter" data-counter-value="15" data-counter-suffix="%">15%</span></div><div class="cap" data-en="average real discount" data-ru="средняя реальная скидка">average real discount</div></div>
+    </div>
+    <div class="calc reveal">
+      <div class="calc-in">
+        <h3 data-en="Estimate your savings" data-ru="Посчитайте вашу экономию">…</h3>
+        <div class="field">
+          <label data-en="Pick a service" data-ru="Выберите сервис">Pick a service</label>
+          <select id="svcSelect" onchange="calc()"></select>
+        </div>
+        <div class="field">
+          <label data-en="Your current monthly spend (USD)" data-ru="Ваши текущие расходы в месяц (USD)">Your current monthly spend (USD)</label>
+          <input id="spendInput" type="number" min="0" step="100" value="20000" oninput="calc()" />
+          <div class="calc-note" data-en="Enter what you pay today — we apply the Garna partner discount." data-ru="Введите, сколько платите сейчас — применим партнёрскую скидку Garna.">…</div>
+        </div>
+      </div>
+      <div class="calc-out">
+        <div class="row"><span class="k" data-en="Service" data-ru="Сервис">Service</span><span class="v" id="oSvc">ClickUp</span></div>
+        <div class="row"><span class="k" data-en="Garna discount" data-ru="Скидка Garna">Garna discount</span><span class="v" id="oPct">21%</span></div>
+        <div class="row"><span class="k" data-en="New monthly cost" data-ru="Новая цена в месяц">New monthly cost</span><span class="v" id="oNew">$15,800</span></div>
+        <div class="save">
+          <div class="k" data-en="You save / year" data-ru="Экономия / год">You save / year</div>
+          <div class="v" id="oSave">$50,400</div>
+          <div class="yr" id="oMo" data-tpl-en="{m} / month saved" data-tpl-ru="{m} / мес экономии">$4,200 / month saved</div>
+        </div>
+      </div>
+    </div>
+    <p class="calc-note" style="margin-top:14px" data-en="Figures use average real discounts negotiated by Garna partners. Final terms confirmed at onboarding." data-ru="Расчёт по средним реальным скидкам партнёров Garna. Финальные условия подтверждаются при подключении.">…</p>
+  </div>
+</section>
+
+<!-- EOR -->
+<section class="section-pad" id="eor">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <span class="section-kicker"><span class="dot"></span>Employer of Record</span>
+        <h2 style="font-size:clamp(27px,3.7vw,42px);letter-spacing:-1.2px" data-en="Hire employees anywhere, without a local entity" data-ru="Нанимайте сотрудников где угодно, без своего юрлица">…</h2>
+        <div class="eor-price"><span class="p"><span class="js-counter" data-counter-value="350" data-counter-prefix="$">$350</span></span><span class="u" data-en="/ employee / month" data-ru="/ сотрудник / месяц">/ employee / month</span></div>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2.4"><path d="m5 12 5 5 9-11"/></svg><span data-en="<b>Hire globally, faster.</b> Onboard talent in 150+ countries without opening offices." data-ru="<b>Нанимайте по миру быстрее.</b> Оформляйте людей в 150+ странах без открытия офисов.">…</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2.4"><path d="m5 12 5 5 9-11"/></svg><span data-en="<b>Full legal compliance.</b> Garna handles local labor law, taxes and contracts." data-ru="<b>Полный комплаенс.</b> Garna берёт на себя трудовое право, налоги и договоры.">…</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2.4"><path d="m5 12 5 5 9-11"/></svg><span data-en="<b>One platform.</b> Payroll, taxes, onboarding and offboarding in a single dashboard." data-ru="<b>Одна платформа.</b> Зарплата, налоги, онбординг и офбординг в одном кабинете.">…</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2.4"><path d="m5 12 5 5 9-11"/></svg><span data-en="<b>Lower the risk.</b> Garna takes on misclassification and hiring/firing risk." data-ru="<b>Меньше рисков.</b> Garna берёт на себя риск неверной классификации и найма/увольнения.">…</span></li>
+        </ul>
+      </div>
+      <div class="panel reveal delay-1">
+        <div class="mini"><span class="k" data-en="Countries covered" data-ru="Стран покрытия">Countries covered</span><span class="v">150+</span></div>
+        <div class="mini"><span class="k" data-en="Setup time" data-ru="Срок запуска">Setup time</span><span class="v" data-en="Days, not months" data-ru="Дни, а не месяцы">Days, not months</span></div>
+        <div class="mini"><span class="k" data-en="Local entity required" data-ru="Нужно своё юрлицо">Local entity required</span><span class="v" style="color:var(--green-bright)" data-en="No" data-ru="Нет">No</span></div>
+        <div class="mini"><span class="k" data-en="Workforce types" data-ru="Типы найма">Workforce types</span><span class="v" data-en="Full-time · Contractors" data-ru="Штат · Контракторы">Full-time · Contractors</span></div>
+        <div class="mini"><span class="k" data-en="Support" data-ru="Поддержка">Support</span><span class="v">24/7</span></div>
+        <a href="https://garna.io/en/employer-of-record" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:22px;width:100%" data-en="Explore EOR" data-ru="Подробнее об EOR">Explore EOR</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRYPTO CARDS -->
+<section class="section-pad" id="cards">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:40px">
+      <span class="section-kicker"><span class="dot"></span><span data-en="Non-KYC crypto cards" data-ru="Non-KYC крипто-карты">Non-KYC crypto cards</span></span>
+      <h2 data-en="A card your people can actually use, anywhere" data-ru="Карта, которой ваши люди смогут платить где угодно">…</h2>
+      <p data-en="Alongside payouts, Garna issues branded crypto cards for your contractors and creators. Fund them in crypto, spend anywhere." data-ru="Помимо выплат, Garna выпускает брендированные крипто-карты для контракторов и креаторов: пополнение в крипте, оплата где угодно.">…</p>
+    </div>
+    <div class="cards-grid">
+      <div class="ccard reveal">
+        <div class="top"><div class="brand">Garna <span>Card</span></div><div class="chip"></div></div>
+        <div class="no">•••• •••• •••• 4461</div>
+        <div class="btm"><div class="lbl">CRYPTO · VIRTUAL / PLASTIC</div><div class="nkyc">NON-KYC</div></div>
+      </div>
+      <ul class="cbullets reveal delay-1">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2.4"><path d="m5 12 5 5 9-11"/></svg><span data-en="<b>Non-KYC issuance</b> — quick onboarding, with less hassle for your creators." data-ru="<b>Выпуск без KYC</b> — быстрый онбординг без лишних сложностей для креаторов.">…</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2.4"><path d="m5 12 5 5 9-11"/></svg><span data-en="<b>Virtual &amp; plastic</b> cards, with <b>Apple Pay &amp; Google Pay</b> support." data-ru="<b>Виртуальные и пластиковые</b> карты с поддержкой <b>Apple Pay и Google Pay</b>.">…</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2.4"><path d="m5 12 5 5 9-11"/></svg><span data-en="<b>Top up in crypto</b> — USDT, BTC, ETH, USDC — and spend in fiat anywhere cards are accepted." data-ru="<b>Пополнение в крипте</b> — USDT, BTC, ETH, USDC — и оплата в фиате везде, где принимают карты.">…</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#a5ea16" stroke-width="2.4"><path d="m5 12 5 5 9-11"/></svg><span data-en="<b>Issued under your label</b> — a “{{PARTNER}} Card” is on the table for your community." data-ru="<b>Выпуск под вашим брендом</b> — «{{PARTNER}} Card» реально возможна для вашего комьюнити.">…</span></li>
+        <div class="card-badges"><span>USDT</span><span>BTC</span><span>ETH</span><span>USDC</span><span>Apple Pay</span><span>Google Pay</span></div>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:40px">
+      <span class="section-kicker"><span class="dot"></span><span>Garna vs <span class="partner-provider"></span></span></span>
+      <h2 data-en="A lower rate, plus tools {{PROVIDER}} doesn't have" data-ru="Ставка ниже, и инструменты, которых нет у {{PROVIDER}}">…</h2>
+      <p data-en="{{PARTNER}} gets a better rate than {{PROVIDER}}, plus a set of products that come with the account." data-ru="{{PARTNER}} получает ставку выгоднее, чем у {{PROVIDER}}, плюс набор продуктов, которые идут вместе с аккаунтом.">…</p>
+    </div>
+    <table class="cmp-table reveal">
+      <thead>
+        <tr><th data-en="What matters to {{PARTNER}}" data-ru="Что важно для {{PARTNER}}">…</th><th class="center partner-provider">4dev</th><th class="center g">Garna</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-en="Fee on payouts" data-ru="Комиссия на выплаты">…</td><td class="center"><span class="old partner-provider-rate">~3%</span></td><td class="center gcol">2.5%</td></tr>
+        <tr><td data-en="Contractor withdrawal fee" data-ru="Комиссия за вывод">…</td><td class="center" data-en="Varies" data-ru="По-разному">Varies</td><td class="center gcol" data-en="Free" data-ru="Бесплатно">Free</td></tr>
+        <tr><td data-en="Payment methods (bank, card, wallet, crypto)" data-ru="Платёжные методы (банк, карта, кошелёк, крипта)">…</td><td class="center no">—</td><td class="center gcol yes" data-en="✓ 150+ countries" data-ru="✓ 150+ стран">✓</td></tr>
+        <tr><td data-en="Employer of Record" data-ru="Employer of Record">…</td><td class="center no">—</td><td class="center gcol yes" data-en="✓ $350 / mo" data-ru="✓ $350 / мес">✓</td></tr>
+        <tr><td data-en="Non-KYC crypto cards" data-ru="Non-KYC крипто-карты">…</td><td class="center no">—</td><td class="center gcol yes">✓</td></tr>
+        <tr><td data-en="SaaS partner discounts (50+ tools)" data-ru="Партнёрские скидки на SaaS (50+ сервисов)">…</td><td class="center no">—</td><td class="center gcol yes" data-en="✓ up to 46%" data-ru="✓ до 46%">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-pad" id="contact">
+  <div class="container">
+    <div class="cta reveal">
+      <h2 data-en="Ready to move {{PARTNER}} payouts to Garna?" data-ru="Готовы перенести выплаты {{PARTNER}} в Garna?">…</h2>
+      <p data-en="We'll set up your account, lock in the 2.5% rate, and run a first test payout this week." data-ru="Настроим аккаунт, зафиксируем ставку 2.5% и проведём первую тестовую выплату на этой неделе.">…</p>
+      <a class="btn" id="ctaLink" href="mailto:hello@garna.io" data-en="Book a demo" data-ru="Заказать демо">Book a demo</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-topline">
+      <img class="flogo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAW0AAACLCAMAAACdtTg7AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAYBQTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////l/kKowAAAIB0Uk5TAAaPcgJs//2ZCE75txQy7dMmHNvnQA7B82KhgQR6pQxa+zrx2TAk40gaRmR+q7OvhWYSze88eImnqYt2XLGTWC4YPoeVo58Kg7vrRPdUy70Qz51WdCI4temX9b9gxVJK0So0Fsfh3zZu15uNrdVwHrko3SCRXuVCwyxMaslQaHwi9U42AAAVqklEQVR4nO1de1xTV56/B26giQ1CxChNAEFBQUEFUYuIokiw1JZS8F0QsdKdtUq11bKf/ewfu7Pz2LY7nXamozvTGVxrWzutxT58VGvxXR/1VZ+tCor4flRFrIiySbhJbnK+596bhHaykO8fGs695+Tke88953d+r0O4dgAxo6U9GuroIO3QBm9hm9xph5Y6OtqDbQ25x3FB5FY7NNXB0Q5sh7QNaw257n1bHRzes62zDeoQctnrxjo4vGZb7xjSOnLe29Y6OLxlm0RccfyhCiVnvWyvY8NLtvmIi06t9SCnvWuwY8NLtnuRBueCsHvXvGuxQ8M7tmNJvWtRFPneqyY7NLxiO57U0oXqiGPetNmhIct2gnmbeELflZDrl/qROw9OiXbo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" alt="Garna" />
+      <div class="footer-powered"><span data-en="Powered by" data-ru="Powered by">Powered by</span> <span class="mediacube-logo"><svg id="!;>9_1" data-name="!;>9 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 656.21 97.21"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#e21442;}.cls-3{fill:#fff;}</style></defs><path class="cls-1" d="M17.33,38.48c2.7-3.2,5.5-5.9,9.1-7.3,8.8-3.4,16.9-1.6,24.3,3.9a11.17,11.17,0,0,1,3.2,3.3c.9,1.4,1.3.9,2.1,0a23.61,23.61,0,0,1,10.8-7.9c10.8-3.8,27.3-.1,31.9,15.3a3.3,3.3,0,0,1-.1,2.4,43.54,43.54,0,0,0,1.4,32.5c1.6,3.7.8,8.1.1,12.1a2.84,2.84,0,0,1-3,2H85.43a3.11,3.11,0,0,1-3-2.7,16.35,16.35,0,0,1-.2-2.2c0-10.9.1-21.8,0-32.6,0-4.2-1.6-7.7-5.5-9.8-4.8-2.6-11.8-.3-15.1,4.8a11.41,11.41,0,0,0-1.8,6.5v31.4c0,3.8-1,4.8-4.8,4.8-3.1,0-6.1-.1-9.1,0-3.9.2-4.5-1.7-4.5-4.6V57.08c0-5.3-3.2-9.4-8.3-10.4-8.4-1.7-14.7,5.5-14.6,11.5.2,10.8.1,21.5.1,32.3,0,3.3-1.1,4.4-4.4,4.4h-10c-3.1,0-4.2-1.2-4.2-4.2V35.48a6.58,6.58,0,0,1,.4-2.8,3.58,3.58,0,0,1,3.7-2.5H12a3.34,3.34,0,0,1,3.1,1.8C16.43,33.88,16.73,36.08,17.33,38.48Z"/><path class="cls-1" d="M221.53,87.78a24.84,24.84,0,0,1-5.8,5.4c-4.8,3.1-10.1,3.4-15.6,2.7-13.1-1.6-23.9-11.9-26.4-26.8-1.8-10.8.3-21,7.7-29.5A29.5,29.5,0,0,1,201,29.38a21.56,21.56,0,0,1,17.8,5.6l.7.6h.2c.4-.5.2-1.1.2-1.6V8.38c0-3,1.2-4.1,4.2-4.1h9.8c3.1,0,4.3,1.2,4.3,4.2v81.9c0,3.4-1.2,4.6-4.6,4.6-2.4,0-4.7-.1-7-.1-2.5-.1-3.6-.9-4.2-3.5A20.89,20.89,0,0,1,221.53,87.78Zm-29.7-25a10.92,10.92,0,0,0,.4,4c.3,1,.6,2,1,3,4.3,10.4,16.5,12.8,24.2,4.6,6.2-6.6,5.7-18.1-1-24.2-5.8-5.3-13.1-5.4-19-.2a16.37,16.37,0,0,0-5.6,12.8Z"/><path class="cls-1" d="M489.83,36a20.92,20.92,0,0,1,7.3-5.1c8.2-3.1,15.9-1.8,23.3,2.3a29.89,29.89,0,0,1,11.8,12.1,2,2,0,0,1,.1,2,41.74,41.74,0,0,0,0,30.7,2,2,0,0,1-.1,2c-6.4,11-15.8,16.6-28.7,16.1a19.38,19.38,0,0,1-12.8-5.5,28.77,28.77,0,0,0-2.7-2.2,8.57,8.57,0,0,0-.5,2.7c-.5,2.5-1.9,3.8-4.5,3.8h-7.7c-2.6,0-3.9-1.4-3.9-3.9V8.18c0-2.4,1.3-3.8,3.7-3.8,3.6-.1,7.2,0,10.8,0,2.6,0,3.9,1.4,3.9,4Zm13.3,43.3a14,14,0,0,0,5.7-1.3c9.6-4.5,12.3-18.2,5-26.5-5.7-6.6-13.9-7.1-20.3-1.3-4.4,4-6,9.2-5.4,15C488.93,72.18,494.93,79.18,503.13,79.28Z"/><path class="cls-1" d="M321.43,87.78c-1.5,1.7-2.7,3.5-4.5,4.8a17.57,17.57,0,0,1-9.6,3.5c-8.4.5-16-1.4-22.7-6.7a30.7,30.7,0,0,1-11-18.1c-2.1-10.3-1-20.1,5.1-28.9a29,29,0,0,1,20.8-12.8,28.53,28.53,0,0,1,10.5.2,18,18,0,0,1,11.2,7.6c.3.4.6.8,1.1,1.4.5-2.2,1-4.1,1.4-6.1a2.85,2.85,0,0,1,3-2.4c2.8,0,5.6-.1,8.3,0a3.8,3.8,0,0,1,3.8,3.8v.2c-.1,3.6.4,7.1-.3,10.7-.6,2.7-1.9,5.1-2.6,7.8a39.53,39.53,0,0,0,1.5,24.5,19.27,19.27,0,0,1,1.5,8.2c-.1,1.8,0,3.6,0,5.4a3.6,3.6,0,0,1-3.7,4,75.28,75.28,0,0,1-9.5,0c-2.5-.1-3.6-1.4-3.9-4.4A8.42,8.42,0,0,0,321.43,87.78Zm-.5-25.1a13.61,13.61,0,0,0-.7-5.3c-1.7-5.5-5.1-9.5-10.9-10.8s-10.6.1-14.5,4.6c-3.5,4.1-4.6,9.1-3.9,14.5,1.4,10.8,11,16,20.6,12.5C317.53,76.08,320.93,70.28,320.93,62.68Z"/><path class="cls-1" d="M142.23,68.78h-20.1c-1.6,0-1.6.4-1.1,1.7,2.5,7,8.6,11.5,15.5,11.3a12.27,12.27,0,0,0,9.8-4.9,4.1,4.1,0,0,1,3.7-1.8h10.1c3.6,0,5.2,2.8,3.4,6A29.8,29.8,0,0,1,147,95.18c-16.4,5.9-35.5-1.2-41.6-19.5-4.6-13.6-2.4-26.3,8-36.8,7-7.1,15.8-9.6,25.7-8.7,13.7,1.2,25.5,11.3,28.5,26.8a31.78,31.78,0,0,1,.5,6.2c0,3.5-2.3,5.6-5.9,5.7C155.63,68.78,148.93,68.78,142.23,68.78Zm-21-13h27.7c1,0,.8-.5.6-1.1-2.4-5.5-6-9.3-12.5-9.9a15.14,15.14,0,0,0-15.8,11Z"/><path class="cls-1" d="M446.43,86a59.08,59.08,0,0,1-6.3,6c-7.9,6.1-20.4,4.3-27.2-.8-5.5-4-8-9.7-9.1-16.2-.6-4.1-.3-8.3-.4-12.5V34.78c0-3.5,1.1-4.7,4.7-4.7h9.6c3.2,0,4,.9,4,4v33c0,6,3.4,10.2,9.2,11.3,7.7,1.4,15.1-5,14.9-11.9-.3-10.5-.1-21.1-.1-31.7,0-3.7.9-4.6,4.6-4.6h9.8c2.8,0,3.9,1.2,3.9,3.9v56.8c0,3-1.1,4.1-4.2,4.1h-6.6c-3.2,0-4.6-1-5.7-4.1C447.13,89.28,447.13,87.58,446.43,86Z"/><path class="cls-1" d="M375.13,29.58a32.29,32.29,0,0,1,19.5,5.9c2.2,1.6,2.6,3.4,1.2,5.7s-2.9,4.8-4.3,7.2c-1.8,3-3.3,3.3-6.3,1.4-5-3.2-10.3-4.5-16-2s-9.4,9.7-8.7,16.4c.6,5.8,2.9,10.6,8.4,13.2s10.6,1.8,15.5-1.3c4-2.5,4.8-2.4,7.5,1.7,1.4,2.2,2.9,4.4,4.3,6.5s1.3,3.7-.9,5.2a34.83,34.83,0,0,1-14.7,6.2c-12.2,1.8-22.6-2-30.7-11.2a31.36,31.36,0,0,1-7.6-26.2c2.1-14.1,10.2-23.2,23.7-27.5A23.82,23.82,0,0,1,375.13,29.58Z"/><path class="cls-1" d="M265.73,62.48v28.2c0,3.1-1,4.2-4.2,4.2h-10.4c-2.5,0-3.6-1.1-3.6-3.6V34c0-2.8,1.4-4.1,4.2-4.1h9.8c2.8,0,4.4,1.5,4.4,4.3C265.73,43.68,265.73,53.08,265.73,62.48Z"/><path class="cls-1" d="M265.73,13.68v5.6a3,3,0,0,1-3.2,3.4c-4,.1-7.9,0-11.9,0a3,3,0,0,1-3.2-2.8V7.68c0-2,1.4-3.2,3.6-3.3,3.7-.1,7.5-.1,11.2,0,2.4.1,3.5,1.3,3.5,3.8Z"/><path class="cls-2" d="M628,0h-10.7a28.38,28.38,0,0,0-28.2,28.6V63.7a4.42,4.42,0,0,0,4.3,4.4H628a28.38,28.38,0,0,0,28.2-28.6V28.7A28.53,28.53,0,0,0,628,0Z"/><path class="cls-1" d="M591,74.59l-6.33-.15a4.14,4.14,0,0,0-4.9,1.54,12.27,12.27,0,0,1-9.8,4.9c-7,.2-13-4.3-15.5-11.3-.5-1.3-.4-1.7,1.1-1.7h22.12a5.44,5.44,0,0,0,5.44-5.44V34c0-.59,0-1.18,0-1.76a31.18,31.18,0,0,0-10.61-2.91c-9.9-.9-18.7,1.6-25.7,8.7-10.4,10.5-12.5,23.2-8,36.8,6.1,18.3,25.2,25.5,41.6,19.5a29.8,29.8,0,0,0,16.5-14.1C599.11,76.3,596.29,73,591,74.59ZM570.43,43.88c6.5.6,10.1,4.4,12.5,9.9.2.6.4,1.1-.6,1.1h-27.7A15.18,15.18,0,0,1,570.43,43.88Z"/><path class="cls-3" d="M636,37.24,615.6,49a2.65,2.65,0,0,1-4-2.29V23.15a2.65,2.65,0,0,1,4-2.29L636,32.65A2.66,2.66,0,0,1,636,37.24Z"/></svg></span></div>
+      <div class="footer-copyline">garna.io © 2026</div>
+    </div>
+    <div class="footer-main">
+      <div class="footer-col">
+        <h5 data-en="Contact" data-ru="Контакты">Contact</h5>
+        <a href="mailto:hello@garna.io">hello@garna.io</a>
+        <a href="https://www.linkedin.com/company/garna-io" target="_blank" rel="noopener">Garna on LinkedIn</a>
+        <a href="https://garna.io/en" target="_blank" rel="noopener">garna.io</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-en="Legal" data-ru="Документы">Legal</h5>
+        <a href="https://app.garna.io/api/documents/agreement?lang=en" target="_blank" rel="noopener" data-en="Terms of Service" data-ru="Условия использования">Terms of Service</a>
+        <a href="https://app.garna.io/api/documents/privacy?lang=en" target="_blank" rel="noopener" data-en="Privacy Policy" data-ru="Политика конфиденциальности">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-en="Address" data-ru="Адрес">Address</h5>
+        <p>Nicosia, Stasikratous, 20, 1st floor, Flat/Office 105, 1065, Cyprus</p>
+      </div>
+    </div>
+    <p class="legal">© 2026 GARNA LTD. Stasikratous, 20, 1st floor, Flat/Office 105, 1065, Nicosia, Cyprus. HE 478114. Garna is not a financial institution. All fintech services within the Garna app are provided by certified partners, including Payoneer and others. Payment services may be provided by affiliates MEDIACUBE PAY INC. (Office 29 - 18 King Street East, Suite 1400, Toronto, Ontario, M5C1C4, Canada, FINTRAC Registration Number: M24438190) as well as other non-affiliated companies.</p>
+    <div class="foot-bottom">
+      <span>garna.io © 2026</span>
+      <span data-en="Commercial proposal — confidential. Prepared for {{PARTNER}}." data-ru="Коммерческое предложение — конфиденциально. Подготовлено для {{PARTNER}}.">…</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   ▚▚▚  PARTNER CONFIG — CHANGE ONLY THIS BLOCK PER CLIENT  ▚▚▚
+   Меняйте ТОЛЬКО этот блок под каждого нового партнёра.
+   ============================================================ */
+var PARTNER = {
+  name:        "ChillBase",   // Название партнёра / partner name
+  logo:        "",            // URL или data:URI логотипа. Пусто = текстом. / logo URL, empty = text
+  brandHTML:   'Chill<span style="color:#ff3b30">Base</span>', // как рисовать имя текстом (необязательно) / styled text (optional)
+  volume:      "$300K+",      // Оборот в месяц / monthly volume
+  provider:    "4dev",        // Текущий провайдер / current provider
+  providerRate:"3%",          // Его средняя комиссия / their avg fee
+  rate:        "2.5%",        // Наша ставка / our offered rate
+  contact:     "mailto:hello@garna.io" // Ссылка кнопки CTA / CTA link (mailto:, https://t.me/…)
+};
+/* ============================================================ */
+
+var DISCOUNTS = [{"name": "Miro", "pct": 46.0}, {"name": "Grammarly", "pct": 40.0}, {"name": "BambooHR", "pct": 38.0}, {"name": "LastPass", "pct": 36.0}, {"name": "ClickUp", "pct": 21.0}, {"name": "Apollo", "pct": 20.0}, {"name": "Slack", "pct": 19.0}, {"name": "Carta", "pct": 19.0}, {"name": "Zoom", "pct": 18.0}, {"name": "HubSpot", "pct": 17.0}, {"name": "Amplitude", "pct": 16.0}, {"name": "Zendesk", "pct": 16.0}, {"name": "Microsoft (365 / Teams)", "pct": 16.0}, {"name": "Google Workspace", "pct": 15.0}, {"name": "1Password", "pct": 15.0}, {"name": "Keeper", "pct": 15.0}, {"name": "Asana", "pct": 13.0}, {"name": "Bitwarden", "pct": 11.0}, {"name": "Aircall", "pct": 10.0}, {"name": "Adobe", "pct": 9.0}, {"name": "GitLab", "pct": 8.5}, {"name": "Azure", "pct": 8.0}, {"name": "Atlassian (Jira/Confluence)", "pct": 5.0}, {"name": "Confluence", "pct": 5.0}, {"name": "Salesforce", "pct": 4.0}];
+var LANG = 'en';
+
+/* --- service dropdown --- */
+(function(){
+  var sel=document.getElementById('svcSelect');
+  DISCOUNTS.forEach(function(d,i){
+    var o=document.createElement('option');
+    o.value=i; o.textContent=d.name+' — '+d.pct+'%';
+    sel.appendChild(o);
+  });
+  var def=DISCOUNTS.findIndex(function(d){return d.name==='ClickUp';});
+  sel.value=def>=0?def:0;
+})();
+
+function fmt(n){return '$'+Math.round(n).toLocaleString('en-US');}
+function calc(){
+  var sel=document.getElementById('svcSelect'), d=DISCOUNTS[sel.value];
+  var spend=parseFloat(document.getElementById('spendInput').value)||0;
+  var neu=spend*(1-d.pct/100), moSave=spend-neu, yrSave=moSave*12;
+  document.getElementById('oSvc').textContent=d.name;
+  document.getElementById('oPct').textContent=d.pct+'%';
+  document.getElementById('oNew').textContent=fmt(neu);
+  document.getElementById('oSave').textContent=fmt(yrSave);
+  var mo=document.getElementById('oMo');
+  var tpl=mo.getAttribute('data-tpl-'+LANG)||'{m} / month saved';
+  mo.textContent=tpl.replace('{m}',fmt(moSave));
+}
+
+/* --- token replacement (partner values) --- */
+function tokens(str){
+  return str
+    .split('{{PARTNER}}').join(PARTNER.name)
+    .split('{{VOLUME}}').join(PARTNER.volume)
+    .split('{{PROVIDER_RATE}}').join(PARTNER.providerRate)
+    .split('{{PROVIDER}}').join(PARTNER.provider)
+    .split('{{RATE}}').join(PARTNER.rate);
+}
+
+function applyPartner(){
+  // hero brand lockup
+  var brand=document.getElementById('partnerBrand');
+  if(PARTNER.logo){ brand.innerHTML='<img src="'+PARTNER.logo+'" alt="'+PARTNER.name+'" />'; }
+  else { brand.innerHTML=PARTNER.brandHTML || PARTNER.name; }
+  // simple text tokens
+  document.querySelectorAll('.partner-token').forEach(function(el){el.textContent=PARTNER.name;});
+  document.querySelectorAll('.partner-provider').forEach(function(el){el.textContent=PARTNER.provider;});
+  document.querySelectorAll('.partner-provider-rate').forEach(function(el){
+    el.textContent=(el.classList.contains('old')?'~':'')+PARTNER.providerRate;});
+  var cta=document.getElementById('ctaLink'); if(cta) cta.href=PARTNER.contact;
+  var nav=document.querySelector('.nav-cta'); if(nav) nav.href='#contact';
+}
+
+/* --- language --- */
+function applyLang(){
+  document.documentElement.lang=LANG;
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    var v=el.getAttribute('data-'+LANG);
+    if(v!=null) el.innerHTML=tokens(v);
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.classList.toggle('is-active', b.getAttribute('data-lang')===LANG);
+  });
+  calc();
+}
+function setLang(l){LANG=l;try{localStorage.setItem('garna_lang',l);}catch(e){}applyLang();}
+document.querySelectorAll('.lang-btn').forEach(function(b){
+  b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'));});
+});
+
+/* --- count-up --- */
+function fmtCounter(v,el){
+  var pre=el.dataset.counterPrefix||'', suf=el.dataset.counterSuffix||'';
+  var dec=parseInt(el.dataset.counterDecimals||'0',10);
+  var val = dec>0 ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+  return pre+val+suf;
+}
+function initCounters(){
+  var els=document.querySelectorAll('.js-counter');
+  var run=function(el){
+    if(el.dataset.done)return; el.dataset.done='1';
+    var target=Number(el.dataset.counterValue||'0'), dur=1200, t0=performance.now();
+    var tick=function(now){
+      var p=Math.min((now-t0)/dur,1), e=1-Math.pow(1-p,3);
+      el.textContent=fmtCounter(target*e,el);
+      if(p<1)requestAnimationFrame(tick); else el.textContent=fmtCounter(target,el);
+    };
+    requestAnimationFrame(tick);
+  };
+  if(!('IntersectionObserver' in window)){els.forEach(run);return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){run(x.target);io.unobserve(x.target);}});},{threshold:.4});
+  els.forEach(function(el){io.observe(el);});
+}
+
+/* --- reveal on scroll --- */
+function initReveal(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-visible');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('is-visible');io.unobserve(x.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+}
+
+/* --- init --- */
+(function(){
+  try{var s=localStorage.getItem('garna_lang');if(s)LANG=s;}catch(e){}
+  applyPartner();
+  applyLang();
+  initReveal();
+  initCounters();
+})();
+</script>
+</body>
+</html>
